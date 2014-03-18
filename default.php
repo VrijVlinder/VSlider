@@ -14,7 +14,7 @@ Contact Vanilla Forums Inc. at support [at] vanillaforums [dot] com
 $PluginInfo['VSlider'] = array(
    'Name'=>'VSlider',
    'Description' => "This plugin adds an image slider carousel to the Discussions Index Header below the menu. You can add unlimited images or text and use it as a banner. ",
-   'Version' => '1.1',
+   'Version' => '1.2',
    'Author' => "VrijVlinder",
    'AuthorEmail' => 'contact@vrijvlinder.com',
    'AuthorUrl' => "http://www.vrijvlinder.com"
@@ -37,15 +37,27 @@ class VSlider_Plugin extends Gdn_Plugin {
 
 public function DiscussionsController_Render_Before($Sender) {
 //comment this if you want it in the categories index page
-  $Sender->AddJsFile('plugins/VSlider/js/vslider.js');
-}
 
+  if(IsMobile()){
+ return;
+}
+else
+{
+$Sender->AddJsFile('plugins/VSlider/js/vslider.js');
+} 
+}
+  
 	   
  public function CategoriesController_Render_Before($Sender) {
 //uncomment this if you want it in the categories index page
+//   if(IsMobile()){
+ //return;
+//}
+//else
+//{
 //$Sender->AddJsFile('plugins/VSlider/js/vslider.js');
-
-
+//} 
+}
 
  
      }
